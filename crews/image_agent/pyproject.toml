@@ -1,0 +1,23 @@
+[project]
+name = "image_agent"
+version = "0.1.0"
+description = "image_agent using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai[tools]>=0.95.0,<1.0.0"
+]
+
+[project.scripts]
+image_agent = "image_agent.main:run"
+run_crew = "image_agent.main:run"
+train = "image_agent.main:train"
+replay = "image_agent.main:replay"
+test = "image_agent.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"

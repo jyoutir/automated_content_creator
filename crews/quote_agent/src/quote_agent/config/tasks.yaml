@@ -1,0 +1,36 @@
+author_selection_task:
+  description: >
+    Select 25 influential classical authors, philosophers, artists, and scientists whose work or writing
+    contains profound ideas and meaningful quotes. Provide a very short description for each, including:
+      - Name
+      - Notable works
+      - Themes or areas of focus
+    Return a list of exactly 25 such individuals.
+  expected_output: >
+    25 entries, each containing:
+      1. Author's/person's name
+      2. Notable works
+      3. Themes they're known for
+  agent: author_selector
+
+quote_curation_task:
+  description: >
+    You have 25 authors from author_selection_task. For each author, provide exactly 10 direct, verifiable quotes (250 total).
+    Each quote must:
+      1. Genuinely come from that author (no mixing or paraphrasing).
+      2. Be under 25 words.
+      3. Include the exact, recognized work/source title if known (e.g., from official publications, Project Gutenberg, known quote anthologies, or other legitimate documentation).
+      4. Quotes must be meaningful, resonating with modern readers.
+
+    If you’re unsure about the exact wording or source, consult additional recognized texts by that author so you can still provide 10 valid quotes.
+    Do not skip or merge authors. If a quote is truly unlocatable, find a different one from the same author.
+    Absolutely no invented quotes or mismatched sources.
+
+    The output must be 250 lines total (10 per author) in this exact format:
+    "Quote (under 25 words)" - "Exact Work/Source Title" - "Author's Name"
+
+    No extra commentary, disclaimers, or numbering. No authors beyond these 25.  
+
+  expected_output: >
+    250 lines total. Exactly 10 quotes per author (25 × 10).
+  agent: quote_provider

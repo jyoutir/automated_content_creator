@@ -1,0 +1,5 @@
+User is a developer for Wordbook.
+User is an AI Engineer creating a Vocabulary App.
+User is using CrewAI to create content for their social media pages. 
+User is currently generating images for a guessing game within their app.
+They are interested in keeping all the images follow a consitent theme to improve user experience. 
