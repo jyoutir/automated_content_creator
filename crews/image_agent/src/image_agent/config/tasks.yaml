@@ -1,6 +1,6 @@
 scenic_ideas_task:
   description: >
-    Generate 50 scenic ideas for a Dostoevsky-style novel.
+    Generate 50 scenic ideas for a Dostoevsky//tolstoy/chekhov/austen/shakespeare style novel.
     Each scene should be emotionally rich and visually compelling,
     capturing the psychological depth and atmospheric qualities typical of Dostoevsky's work.
     Consider themes of moral conflict, psychological turmoil, and social commentary.
@@ -29,18 +29,11 @@ prompt_generation_task:
     4. The focal point and composition
   agent: image_prompt_generator
 
-image_generation_task:
+generate_images_task:
   description: >
-    Using DALL-E 3, generate images for each approved prompt while ensuring:
-    - Strict adherence to 16:9 format (1792x1024)
-    - Consistent impressionist oil painting style
-    - Proper implementation of the single dominant color palette
-    - Clear focal points as specified in the prompts
-    - No blank spaces or borders
-    - High-quality output with "standard" quality setting
+    Using DALL-E, generate renaissance-themed images for each scence based on the provided prompts.
+    Check generated_images.md for existing images, if there is a similar image name then skip it and continue from the prompt where it left off - some prompts may have already been done!
+    Save each image with its corresponding word as the filename.
   expected_output: >
-    For each prompt, provide:
-    1. The generated image URL
-    2. Brief confirmation of successful generation
-    3. Any relevant warnings or quality notes
-  agent: dalle_artist 
+    A list of generated image paths and their corresponding words.
+  agent: image_generator
