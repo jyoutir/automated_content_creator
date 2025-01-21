@@ -1,6 +1,6 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
-from .tools.dalle_tool import get_dalle_tool
+from image_agent.tools.dalle_tool import DallETool
 
 @CrewBase
 class ImageAgentCrew():
@@ -12,7 +12,7 @@ class ImageAgentCrew():
     @agent
     def scenic_artist(self) -> Agent:
         return Agent(
-            config=self.agents_config['scenic_artist'],  # Matches the name in agents.yaml
+            config=self.agents_config['scenic_artist'],  
             verbose=True
         )
 
@@ -24,10 +24,10 @@ class ImageAgentCrew():
         )
 
     @agent
-    def dalle_artist(self) -> Agent:
+    def image_generator(self) -> Agent:  
         return Agent(
-            config=self.agents_config['dalle_artist'],
-            tools=[get_dalle_tool()],  # Add the DALL-E tool here
+            config=self.agents_config['image_generator'],  
+            tools=[DallETool()],
             verbose=True
         )
 
@@ -46,9 +46,9 @@ class ImageAgentCrew():
         )
 
     @task
-    def image_generation_task(self) -> Task:
+    def generate_images_task(self) -> Task:
         return Task(
-            config=self.tasks_config['image_generation_task'],
+            config=self.tasks_config['generate_images_task'],
             output_file='generated_images.md'
         )
 
