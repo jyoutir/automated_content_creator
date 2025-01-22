@@ -84,7 +84,9 @@ class VideoGenerator:
 
 
             
-            # After MAIN video:
+            ##########################################
+            #####       START OF "HOOK"       ######## <- to be replaced with static IMAGES 
+            ##########################################    AI agent will determine which hook works best.
             
             # Create logo and wordbook text combination
             logo_clip = (ImageClip("assets/wordbook.png")
@@ -115,6 +117,10 @@ class VideoGenerator:
                 text_align='center')
                 .with_duration(3)
                 .with_position(('center', 600)))
+            
+            ##########################################
+            #####       END OF "HOOK"         ######## 
+            ########################################## 
 
             print("Combining clips...")
             # Concatenate everything
