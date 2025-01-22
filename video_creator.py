@@ -1,7 +1,16 @@
-from moviepy import ImageClip, TextClip, CompositeVideoClip, concatenate_videoclips
+from moviepy import (
+    ImageClip,
+    TextClip,
+    CompositeVideoClip,
+    concatenate_videoclips,
+    vfx
+)
 import os
 import random
 import time
+
+video_width = 720
+video_height = 1280
 
 class VideoGenerator:
     def __init__(self):
@@ -55,7 +64,7 @@ class VideoGenerator:
                 size=(800, None),  # Width of the text box; height is auto-determined
                 font_size=60,      # Font size in points
                 color='white',     # Text color
-                font='fonts/JosefinSans-Bold.ttf',  # Path to your font file
+                font='assets/JosefinSans-Bold.ttf',  # Path to your font file
                 method='caption',  # Ensures text wrapping within the specified width
                 text_align='center',  # Center-aligns the text within the text box
                 stroke_color='grey',  # Adds a black outline for better readability
@@ -66,11 +75,61 @@ class VideoGenerator:
             
             # Center the text
             text_clip = text_clip.with_position(('center', 'center'))
+
+            # Logo creation
+            logo = (ImageClip("assets/wordbook.png")
+                    .with_duration(8)
+                    .resized(height=160)  # Resize first
+                    .with_position((80, 80)))  # x=60 from left, y=-80 from bottom
+
+
             
+            # After MAIN video:
+            
+            # Create logo and wordbook text combination
+            logo_clip = (ImageClip("assets/wordbook.png")
+                        .resized(height=80)
+                        .with_duration(3))
+            
+            wordbook_text = (TextClip(
+                text="WordBook",
+                font_size=60,
+                color="white",
+                font="assets/JosefinSans-Regular.ttf")
+                .with_duration(3)
+                .with_position((lambda t: (logo_clip.w + 20, 10))))
+            
+            logo_with_text = (CompositeVideoClip([logo_clip, wordbook_text], size=(video_width, video_height))
+                            .with_position(('center', 400))
+                            .with_duration(3))
+            
+            # Create promotional text
+            promo_text = (TextClip(
+                text="If you liked this,\n\nYou will LOVE my\n\napp WordBook\n\nGet it now!",
+                font_size=60,
+                color="white",
+                font="assets/JosefinSans-Regular.ttf",
+                method='caption',
+                interline=25,
+                size=(800, None),
+                text_align='center')
+                .with_duration(3)
+                .with_position(('center', 600)))
+
             print("Combining clips...")
-            # Concatenate image clips + overlay
-            final_clip = concatenate_videoclips(clips, method="compose")
-            final_video = CompositeVideoClip([final_clip, text_clip])
+            # Concatenate everything
+            base_video = concatenate_videoclips(clips, method="compose")
+            
+            # Create final video with proper duration
+            final_video = CompositeVideoClip([
+                base_video,
+                text_clip,
+                logo,
+                logo_with_text.with_start(8),  
+                promo_text.with_start(8)      
+            ]) 
+
+            
             output_path = os.path.join(self.output_dir, f"output_{int(time.time())}.mp4")
             
             print("Writing video file...")
