@@ -3,7 +3,7 @@ from moviepy import (
     TextClip,
     CompositeVideoClip,
     concatenate_videoclips,
-    vfx
+    AudioFileClip,
 )
 import os
 import random
@@ -82,8 +82,6 @@ class VideoGenerator:
                     .resized(height=160)  # Resize first
                     .with_position((80, 80)))  # x=60 from left, y=-80 from bottom
 
-
-            
             ##########################################
             #####       START OF "HOOK"       ######## <- to be replaced with static IMAGES 
             ##########################################    AI agent will determine which hook works best.
@@ -117,10 +115,10 @@ class VideoGenerator:
                 text_align='center')
                 .with_duration(3)
                 .with_position(('center', 600)))
-            
+
             ##########################################
             #####       END OF "HOOK"         ######## 
-            ########################################## 
+            ##########################################
 
             print("Combining clips...")
             # Concatenate everything
@@ -135,7 +133,15 @@ class VideoGenerator:
                 promo_text.with_start(8)      
             ]) 
 
+            # Add background music
+            audio = AudioFileClip("assets/music/music1.mp3") 
+            if audio.duration < final_video.duration:
+                audio = audio.loop(duration=final_video.duration)
+            else:
+                audio = audio.subclipped(0, final_video.duration) 
             
+            # Add audio to video + output
+            final_video = final_video.with_audio(audio)
             output_path = os.path.join(self.output_dir, f"output_{int(time.time())}.mp4")
             
             print("Writing video file...")
@@ -143,7 +149,7 @@ class VideoGenerator:
                 output_path, 
                 fps=24, 
                 codec='libx264',
-                audio=False
+                audio_codec='aac'
             )
             
             print(f"Video created successfully: {output_path}")
