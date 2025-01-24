@@ -1,99 +1,99 @@
 1. **Homer**  
    - Notable works: "The Iliad," "The Odyssey"  
-   - Themes: Heroism, fate, humanity, and the moral dilemmas of war.
+   - Themes: Heroism, fate, the human condition, the nature of gods and men.
 
 2. **Plato**  
    - Notable works: "The Republic," "Phaedrus," "Symposium"  
-   - Themes: Idealism, justice, ethics, and the nature of reality.
+   - Themes: Ethics, politics, metaphysics, the theory of forms.
 
 3. **Aristotle**  
-   - Notable works: "Nicomachean Ethics," "Politics," "Poetics"  
-   - Themes: Virtue ethics, logic, natural science, and metaphysics.
+   - Notable works: "Nicomachean Ethics," "Poetics," "Politics"  
+   - Themes: Virtue ethics, aesthetics, natural sciences, logic.
 
 4. **Virgil**  
-   - Notable works: "The Aeneid," "The Georgics," "The Eclogues"  
-   - Themes: Duty, heroism, fate, and the founding of nations.
+   - Notable works: "The Aeneid," "Eclogues," "Georgics"  
+   - Themes: Nationalism, duty to the state, the journey of life.
 
-5. **Confucius**  
-   - Notable works: "Analects"  
-   - Themes: Morality, social relationships, justice, and proper governance.
+5. **Socrates**  
+   - Notable works: "Dialogues" (Apology, Crito, etc.) (as reported by Plato)  
+   - Themes: Ethics, self-knowledge, the Socratic method.
 
-6. **Socrates**  
-   - Notable works: None written by himself, but discussed in "Dialogues" by Plato  
-   - Themes: Ethics, self-knowledge, the examined life, and dialectical method.
+6. **Confucius**  
+   - Notable works: "The Analects"  
+   - Themes: Morality, social relationships, justice, and sincerity.
 
-7. **Seneca**  
-   - Notable works: "Letters to Lucilius," "Tragedies"  
-   - Themes: Stoicism, virtue, fate, and the human experience.
+7. **Machiavelli**  
+   - Notable works: "The Prince," "Discourses on Livy"  
+   - Themes: Power, statecraft, pragmatism in politics.
 
-8. **Laozi**  
-   - Notable works: "Tao Te Ching"  
-   - Themes: Nature, simplicity, harmony, and the concept of the Dao.
-
-9. **Rumi**  
-   - Notable works: "Masnavi," "Diwan-e Shams-e Tabrizi"  
-   - Themes: Love, spirituality, the nature of existence, and unity.
-
-10. **Dante Alighieri**  
-   - Notable works: "The Divine Comedy," "La Vita Nuova"  
-   - Themes: Redemption, divine love, morality, and the afterlife.
-
-11. **William Shakespeare**  
+8. **Shakespeare**  
    - Notable works: "Hamlet," "Macbeth," "Romeo and Juliet"  
-   - Themes: Human nature, love, power, and the complexity of the human condition.
+   - Themes: Love, power, human nature, betrayal.
 
-12. **Michelangelo**  
-   - Notable works: "David," "The Creation of Adam," "The Last Judgment"  
-   - Themes: Beauty, spirituality, human emotion, and creativity.
+9. **Rene Descartes**  
+   - Notable works: "Meditations on First Philosophy," "Discourse on the Method"  
+   - Themes: Rationalism, epistemology, dualism.
 
-13. **Johann Wolfgang von Goethe**  
-   - Notable works: "Faust," "The Sorrows of Young Werther"  
-   - Themes: Romanticism, individuality, the human quest for knowledge and fulfillment.
+10. **John Locke**  
+    - Notable works: "Two Treatises of Government," "An Essay Concerning Human Understanding"  
+    - Themes: Empiricism, political philosophy, natural rights.
 
-14. **Immanuel Kant**  
-   - Notable works: "Critique of Pure Reason," "Groundwork of the Metaphysics of Morals"  
-   - Themes: Epistemology, ethics, autonomy, and metaphysics.
+11. **Adam Smith**  
+    - Notable works: "The Wealth of Nations," "The Theory of Moral Sentiments"  
+    - Themes: Economics, ethics, individualism.
 
-15. **Virginia Woolf**  
-   - Notable works: "Mrs. Dalloway," "To the Lighthouse"  
-   - Themes: Time, consciousness, feminism, and the fluidity of identity.
+12. **Kant**  
+    - Notable works: "Critique of Pure Reason," "Groundwork of the Metaphysics of Morals"  
+    - Themes: Metaphysics, ethics, autonomy.
 
-16. **Friedrich Nietzsche**  
-   - Notable works: "Thus Spoke Zarathustra," "Beyond Good and Evil"  
-   - Themes: Nihilism, the will to power, morality, and existentialism.
+13. **Friedrich Nietzsche**  
+    - Notable works: "Thus Spoke Zarathustra," "Beyond Good and Evil"  
+    - Themes: Morality, existentialism, the concept of the Übermensch.
 
-17. **Albert Einstein**  
-   - Notable works: Theory of Relativity, numerous scientific papers  
-   - Themes: Time, space, gravity, and the philosophy of science.
+14. **Mary Wollstonecraft**  
+    - Notable works: "A Vindication of the Rights of Woman"  
+    - Themes: Feminism, education, gender equality.
 
-18. **Simone de Beauvoir**  
-   - Notable works: "The Second Sex," "Existentialism and Ethics"  
-   - Themes: Feminism, existentialism, and freedom.
+15. **Charles Darwin**  
+    - Notable works: "On the Origin of Species"  
+    - Themes: Natural selection, evolution, biology.
 
-19. **Sigmund Freud**  
-   - Notable works: "The Interpretation of Dreams," "Civilization and Its Discontents"  
-   - Themes: The unconscious, psychoanalysis, human behavior, and sexuality.
+16. **Leo Tolstoy**  
+    - Notable works: "War and Peace," "Anna Karenina"  
+    - Themes: Morality, spirituality, Russian society.
 
-20. **Leo Tolstoy**  
-   - Notable works: "War and Peace," "Anna Karenina"  
-   - Themes: Morality, the search for meaning, love, and spirituality.
+17. **Virginia Woolf**  
+    - Notable works: "Mrs. Dalloway," "To the Lighthouse"  
+    - Themes: Modernism, gender, consciousness.
 
-21. **Mark Twain**  
-   - Notable works: "The Adventures of Huckleberry Finn," "The Adventures of Tom Sawyer"  
-   - Themes: Social criticism, morality, and human nature.
+18. **Sigmund Freud**  
+    - Notable works: "The Interpretation of Dreams," "Beyond the Pleasure Principle"  
+    - Themes: Psychoanalysis, the unconscious, childhood.
 
-22. **Emily Dickinson**  
-   - Notable works: Collection of poems, including "Because I could not stop for Death"  
-   - Themes: Death, immortality, nature, and identity.
+19. **Albert Einstein**  
+    - Notable works: "Relativity: The Special and General Theory"  
+    - Themes: Physics, relativity, the nature of time and space.
 
-23. **Mahatma Gandhi**  
-   - Notable works: "The Story of My Experiments with Truth"  
-   - Themes: Nonviolence, civil rights, and social change.
+20. **Simone de Beauvoir**  
+    - Notable works: "The Second Sex"  
+    - Themes: Feminism, existentialism, oppression.
 
-24. **Michel Foucault**  
-   - Notable works: "Discipline and Punish," "The History of Sexuality"  
-   - Themes: Power, knowledge, social institutions, and the history of ideas.
+21. **Friedrich Schiller**  
+    - Notable works: "The Robbers," "Letters on the Aesthetic Education of Man"  
+    - Themes: Freedom, art, politics, aesthetics.
 
-25. **Carl Jung**  
-   - Notable works: "The Archetypes and The Collective Unconscious," "Man and His Symbols"  
-   - Themes: Psychology, archetypes, the unconscious, and dream analysis.
+22. **Hannah Arendt**  
+    - Notable works: "The Human Condition," "Eichmann in Jerusalem"  
+    - Themes: Totalitarianism, morality, the nature of evil.
+
+23. **John Stuart Mill**  
+    - Notable works: "On Liberty," "Utilitarianism"  
+    - Themes: Liberty, utilitarian ethics, individual rights.
+
+24. **T.S. Eliot**  
+    - Notable works: "The Waste Land," "The Love Song of J. Alfred Prufrock"  
+    - Themes: Modernism, disillusionment, spiritual desolation.
+
+25. **Michel Foucault**  
+    - Notable works: "Discipline and Punish," "The History of Sexuality"  
+    - Themes: Power, social institutions, knowledge, discourse.
