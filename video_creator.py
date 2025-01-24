@@ -21,7 +21,7 @@ class VideoGenerator:
         # Create output directory if doesn't exist
         os.makedirs(self.output_dir, exist_ok=True)
         
-    def get_random_images(self, num_images=4):
+    def get_random_images(self, num_images=3):
         """Get random images from image directory"""
         available_images = [f for f in os.listdir(self.image_dir) if f.endswith(('.png', '.jpg', '.jpeg'))]
         return random.sample(available_images, min(num_images, len(available_images)))
@@ -56,7 +56,7 @@ class VideoGenerator:
             clips = []
             for img_file in image_files:
                 img_path = os.path.join(self.image_dir, img_file)
-                clip = ImageClip(img_path).with_duration(2)  # Each image shows for 2 seconds
+                clip = ImageClip(img_path).with_duration(3)  # Each image shows for 3 seconds
                 clips.append(clip)
             
             text_clip = TextClip(
@@ -71,14 +71,14 @@ class VideoGenerator:
                 stroke_width=2,     # Thickness of the outline
                 interline=10,
                 margin=(20, 20)    # Adds a 20-pixel margin horizontally and vertically
-            ).with_duration(8)      # Duration of the text clip in seconds
+            ).with_duration(9)      # Duration of the text clip in seconds
             
             # Center the text
             text_clip = text_clip.with_position(('center', 'center'))
 
             # Logo creation
             logo = (ImageClip("assets/wordbook.png")
-                    .with_duration(8)
+                    .with_duration(9)
                     .resized(height=160)  # Resize first
                     .with_position((80, 80)))  # x=60 from left, y=-80 from bottom
 
@@ -86,35 +86,35 @@ class VideoGenerator:
             #####       START OF "HOOK"       ######## <- to be replaced with static IMAGES 
             ##########################################    AI agent will determine which hook works best.
             
-            # Create logo and wordbook text combination
-            logo_clip = (ImageClip("assets/wordbook.png")
-                        .resized(height=80)
-                        .with_duration(3))
+            # # Create logo and wordbook text combination
+            # logo_clip = (ImageClip("assets/wordbook.png")
+            #             .resized(height=80)
+            #             .with_duration(3))
             
-            wordbook_text = (TextClip(
-                text="WordBook",
-                font_size=60,
-                color="white",
-                font="assets/JosefinSans-Regular.ttf")
-                .with_duration(3)
-                .with_position((lambda t: (logo_clip.w + 20, 10))))
+            # wordbook_text = (TextClip(
+            #     text="WordBook",
+            #     font_size=60,
+            #     color="white",
+            #     font="assets/JosefinSans-Regular.ttf")
+            #     .with_duration(3)
+            #     .with_position((lambda t: (logo_clip.w + 20, 10))))
             
-            logo_with_text = (CompositeVideoClip([logo_clip, wordbook_text], size=(video_width, video_height))
-                            .with_position(('center', 400))
-                            .with_duration(3))
+            # logo_with_text = (CompositeVideoClip([logo_clip, wordbook_text], size=(video_width, video_height))
+            #                 .with_position(('center', 400))
+            #                 .with_duration(3))
             
-            # Create promotional text
-            promo_text = (TextClip(
-                text="If you liked this,\n\nYou will LOVE my\n\napp WordBook\n\nGet it now!",
-                font_size=60,
-                color="white",
-                font="assets/JosefinSans-Regular.ttf",
-                method='caption',
-                interline=25,
-                size=(800, None),
-                text_align='center')
-                .with_duration(3)
-                .with_position(('center', 600)))
+            # # Create promotional text
+            # promo_text = (TextClip(
+            #     text="If you liked this,\n\nYou will LOVE my\n\napp WordBook\n\nGet it now!",
+            #     font_size=60,
+            #     color="white",
+            #     font="assets/JosefinSans-Regular.ttf",
+            #     method='caption',
+            #     interline=25,
+            #     size=(800, None),
+            #     text_align='center')
+            #     .with_duration(3)
+            #     .with_position(('center', 600)))
 
             ##########################################
             #####       END OF "HOOK"         ######## 
@@ -129,8 +129,8 @@ class VideoGenerator:
                 base_video,
                 text_clip,
                 logo,
-                logo_with_text.with_start(8),  
-                promo_text.with_start(8)      
+                # logo_with_text.with_start(8),  
+                # promo_text.with_start(8)      
             ]) 
 
             # Add background music
