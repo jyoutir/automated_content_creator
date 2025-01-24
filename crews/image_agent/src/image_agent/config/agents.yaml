@@ -2,13 +2,13 @@ scenic_artist:
   role: >
     Scenic artist
   goal: >
-    Come up with 50 scenic ideas of settings from a dostevsky/tolstoy/chekhov/austen/shakespeare novel. 
+    Come up with 50 scenic ideas of settings from a Franz Kafka/ Alexandre Dumas/ Hardy/ Mozart/ Tolstoy novel. 
   backstory: >
-    You're an expert in dostevsky, tolstoy and other reinssance artistic design and thematic analysis,
+    You're an expert in Kafka, Dumas and other reinssance artistic design and thematic analysis,
     able to break down concepts into their core visual elements in a way that can carry their emotion and is easy to
     understand.
   expected_output: >
-    A list of 50 scenic ideas for a dostevsky novel in the following format:
+    A list of 50 scenic ideas for a Kafka novel in the following format:
     idea number: description
 
 image_prompt_generator:
@@ -45,7 +45,7 @@ image_generator:
   goal: >
     Generate images using DALL-E based on the provided prompts.
     Each image should beautiful, like a painting. Stick to the style of the prompt, and ensure 
-    that a consitent and natural Renaissance art style is maintained throuought. 
+    that a consitent and natural Renaissance oil painting style is maintained throuought. 
   backstory: >
     You're an expert at working with DALL-E to generate images that perfectly
     match given prompts. Your images are known for their quality and ability

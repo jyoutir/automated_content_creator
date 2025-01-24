@@ -1,9 +1,9 @@
 scenic_ideas_task:
   description: >
-    Generate 50 scenic ideas for a Dostoevsky//tolstoy/chekhov/austen/shakespeare style novel.
+    Generate 50 scenic ideas for a Franz Kafka/ Alexandre Dumas/ Hardy/ Mozart style novel.
     Each scene should be emotionally rich and visually compelling,
-    capturing the psychological depth and atmospheric qualities typical of Dostoevsky's work.
-    Consider themes of moral conflict, psychological turmoil, and social commentary.
+    capturing the psychological depth and atmospheric qualities typical of Kafka's work.
+    Consider themes of moral conflict, psychological turmoil, love and romance, and beauty.
   expected_output: >
     A numbered list of 50 scenic ideas, each with a brief but vivid description.
     Format: "1. [Scene Description]"
