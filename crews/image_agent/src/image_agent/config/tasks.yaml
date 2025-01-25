@@ -1,9 +1,8 @@
 scenic_ideas_task:
   description: >
-    Generate 50 scenic ideas for a Franz Kafka/ Alexandre Dumas/ Hardy/ Mozart style novel.
-    Each scene should be emotionally rich and visually compelling,
-    capturing the psychological depth and atmospheric qualities typical of Kafka's work.
-    Consider themes of moral conflict, psychological turmoil, love and romance, and beauty.
+    Generate 50 scenic ideas for a Franz Kafka, Alexandre Dumas, or Thomas Hardy-style novel. 
+    Focus on emotionally rich, visually compelling lonely landscapes that evoke psychological 
+    depth and atmospheric isolation. Explore themes of moral conflict, psychological turmoil, love, and beauty.
   expected_output: >
     A numbered list of 50 scenic ideas, each with a brief but vivid description.
     Format: "1. [Scene Description]"
@@ -31,7 +30,7 @@ prompt_generation_task:
 
 generate_images_task:
   description: >
-    Using DALL-E, generate renaissance-themed images for each scence based on the provided prompts.
+    Using DALL-E, generate painting-esque images for each scence based on the provided prompts.
     Check generated_images.md for existing images, if there is a similar image name then skip it and continue from the prompt where it left off - some prompts may have already been done!
     Save each image with its corresponding word as the filename.
   expected_output: >

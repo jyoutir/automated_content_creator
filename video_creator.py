@@ -13,34 +13,64 @@ video_width = 720
 video_height = 1280
 
 class VideoGenerator:
-    def __init__(self):
+    def __init__(self, iteration=None):
+        self.iteration = iteration
         self.image_dir = "crews/image_agent/generated_images"
-        self.quotes_file = "crews/quote_agent/quotes.md"
+        self.quotes_file = "crews/quote_agent/quotes2.md"
         self.output_dir = "video_output"
         
         # Create output directory if doesn't exist
         os.makedirs(self.output_dir, exist_ok=True)
         
-    def get_random_images(self, num_images=3):
-        """Get random images from image directory"""
-        available_images = [f for f in os.listdir(self.image_dir) if f.endswith(('.png', '.jpg', '.jpeg'))]
-        return random.sample(available_images, min(num_images, len(available_images)))
+        # Initialize image tracking
+        self.available_images = [f for f in os.listdir(self.image_dir) 
+                               if f.endswith(('.png', '.jpg', '.jpeg'))]
+        self.unused_images = self.available_images.copy()  # Make a copy to track unused images
+        
+    def get_random_images(self, num_images=1):
+        """Get random images, using all images before repeating any"""
+        # If we've used all images, reset the unused images list
+        if not self.unused_images:
+            print("Resetting image pool - all images have been used")
+            self.unused_images = self.available_images.copy()
+        
+        # Get random image from unused pool
+        selected_image = random.choice(self.unused_images)
+        self.unused_images.remove(selected_image)  # Remove it from unused pool
+        
+        return [selected_image]  
     
     def get_random_quote(self):
         """Get random quote from quotes file and format it"""
         with open(self.quotes_file, 'r') as file:
-            quotes = [line.strip() for line in file if line.strip()]
+            quotes = [line.strip() for line in file if line.strip() and '. "' in line]
             raw_quote = random.choice(quotes)
         
-        # Split the quote into its components and format it
-        # Format is: "quote" - "source" - "author"
-        parts = raw_quote.split('" - "')
-        quote = parts[0].strip('"')  # Remove quotes from the quote
-        author = parts[2].strip('"')  # Remove quotes from author name
+        try:
+            # Remove the number prefix (e.g., "1. ")
+            quote_without_number = raw_quote.split('. "', 1)[1]
+            
+            # Split the quote into components using standard delimiter
+            parts = quote_without_number.split('" – ')  # Note the specific separator " – "
+            
+            if len(parts) >= 2:  # At minimum: quote and author
+                quote = parts[0]
+                author = parts[1]  # Always take last part as author
+                return f'"{quote}"\n\n- {author}'
+            else:
+                return self.get_random_quote()  # Skip malformed quotes
+                
+        except Exception as e:
+            print(f"Error processing quote: {raw_quote}")
+            return self.get_random_quote()  # Try another quote if error occurs
         
-        # Combine quote and author in desired format
-        formatted_quote = f'"{quote}"\n\n- {author}'
-        return formatted_quote
+    def get_random_music(self):
+        """Get random music file from music directory"""
+        music_dir = "assets/music"
+        available_music = [f for f in os.listdir(music_dir) if f.endswith('.mp3')]
+        random_music = random.choice(available_music)
+        return os.path.join(music_dir, random_music)
+
 
     def create_video(self):
         """Main method to create video"""
@@ -56,7 +86,7 @@ class VideoGenerator:
             clips = []
             for img_file in image_files:
                 img_path = os.path.join(self.image_dir, img_file)
-                clip = ImageClip(img_path).with_duration(3)  # Each image shows for 3 seconds
+                clip = ImageClip(img_path).with_duration(9)  # Each image shows for 3 seconds
                 clips.append(clip)
             
             text_clip = TextClip(
@@ -67,7 +97,7 @@ class VideoGenerator:
                 font='assets/JosefinSans-Bold.ttf',  # Path to your font file
                 method='caption',  # Ensures text wrapping within the specified width
                 text_align='center',  # Center-aligns the text within the text box
-                stroke_color='grey',  # Adds a black outline for better readability
+                stroke_color='black',  # Adds a black outline for better readability
                 stroke_width=2,     # Thickness of the outline
                 interline=10,
                 margin=(20, 20)    # Adds a 20-pixel margin horizontally and vertically
@@ -81,6 +111,16 @@ class VideoGenerator:
                     .with_duration(9)
                     .resized(height=160)  # Resize first
                     .with_position((80, 80)))  # x=60 from left, y=-80 from bottom
+        
+            wordbook_text = (TextClip(
+                text="WordBook",
+                font_size=50,
+                color="white",
+                stroke_color='black',
+                stroke_width=2,
+                font="assets/JosefinSans-Regular.ttf")
+                .with_duration(9)
+                .with_position((lambda t: (logo.w + 120, 150))))
 
             ##########################################
             #####       START OF "HOOK"       ######## <- to be replaced with static IMAGES 
@@ -129,12 +169,13 @@ class VideoGenerator:
                 base_video,
                 text_clip,
                 logo,
+                wordbook_text
                 # logo_with_text.with_start(8),  
                 # promo_text.with_start(8)      
             ]) 
 
             # Add background music
-            audio = AudioFileClip("assets/music/music1.mp3") 
+            audio = AudioFileClip(self.get_random_music())
             if audio.duration < final_video.duration:
                 audio = audio.loop(duration=final_video.duration)
             else:
@@ -159,5 +200,13 @@ class VideoGenerator:
             raise
 
 if __name__ == "__main__":
-    generator = VideoGenerator()
-    generator.create_video()
+    print("Starting 70 video generations...")
+    for i in range(70):
+        try:
+            print(f"\nGenerating video {i+1} of 70...")
+            generator = VideoGenerator(iteration=i+1)
+            generator.create_video()
+            time.sleep(2)
+        except Exception as e:
+            print(f"Error generating video {i+1}: {e}")
+            continue

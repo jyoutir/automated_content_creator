@@ -1,0 +1,5 @@
+crewai
+opentelemetry-api
+opentelemetry-sdk
+opentelemetry-exporter-otlp-proto-grpc
+chromadb
