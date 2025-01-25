@@ -13,56 +13,59 @@ video_width = 720
 video_height = 1280
 
 class VideoGenerator:
+    # Class-level variables for shared tracking
+    _available_images = []
+    _unused_images = []
+    _all_quotes = []
+    _unused_quotes = []
+
     def __init__(self, iteration=None):
         self.iteration = iteration
         self.image_dir = "crews/image_agent/generated_images"
         self.quotes_file = "crews/quote_agent/quotes2.md"
         self.output_dir = "video_output"
         
-        # Create output directory if doesn't exist
         os.makedirs(self.output_dir, exist_ok=True)
         
-        # Initialize image tracking
-        self.available_images = [f for f in os.listdir(self.image_dir) 
-                               if f.endswith(('.png', '.jpg', '.jpeg'))]
-        self.unused_images = self.available_images.copy()  # Make a copy to track unused images
-        
+        # Initialize class-level tracking only once
+        if not VideoGenerator._available_images:
+            VideoGenerator._available_images = [f for f in os.listdir(self.image_dir) 
+                                              if f.endswith(('.png', '.jpg', '.jpeg'))]
+            VideoGenerator._unused_images = VideoGenerator._available_images.copy()
+            
+        if not VideoGenerator._all_quotes:
+            with open(self.quotes_file, 'r') as file:
+                VideoGenerator._all_quotes = [line.strip() for line in file if line.strip() and '. "' in line]
+            VideoGenerator._unused_quotes = VideoGenerator._all_quotes.copy()
+
     def get_random_images(self, num_images=1):
         """Get random images, using all images before repeating any"""
-        # If we've used all images, reset the unused images list
-        if not self.unused_images:
+        if not VideoGenerator._unused_images:
             print("Resetting image pool - all images have been used")
-            self.unused_images = self.available_images.copy()
+            VideoGenerator._unused_images = VideoGenerator._available_images.copy()
         
-        # Get random image from unused pool
-        selected_image = random.choice(self.unused_images)
-        self.unused_images.remove(selected_image)  # Remove it from unused pool
-        
-        return [selected_image]  
+        selected_image = random.choice(VideoGenerator._unused_images)
+        VideoGenerator._unused_images.remove(selected_image)
+        print(f"Selected image: {selected_image}. {len(VideoGenerator._unused_images)} images remaining")
+        return [selected_image]
     
     def get_random_quote(self):
-        """Get random quote from quotes file and format it"""
-        with open(self.quotes_file, 'r') as file:
-            quotes = [line.strip() for line in file if line.strip() and '. "' in line]
-            raw_quote = random.choice(quotes)
+        """Get random quote, using all quotes before repeating any"""
+        if not VideoGenerator._unused_quotes:
+            print("Resetting quote pool - all quotes have been used")
+            VideoGenerator._unused_quotes = VideoGenerator._all_quotes.copy()
+        
+        raw_quote = random.choice(VideoGenerator._unused_quotes)
+        VideoGenerator._unused_quotes.remove(raw_quote)
         
         try:
-            # Remove the number prefix (e.g., "1. ")
             quote_without_number = raw_quote.split('. "', 1)[1]
-            
-            # Split the quote into components using standard delimiter
-            parts = quote_without_number.split('" – ')  # Note the specific separator " – "
-            
-            if len(parts) >= 2:  # At minimum: quote and author
-                quote = parts[0]
-                author = parts[1]  # Always take last part as author
-                return f'"{quote}"\n\n- {author}'
-            else:
-                return self.get_random_quote()  # Skip malformed quotes
-                
+            parts = quote_without_number.split('" – ')
+            return f'"{parts[0]}"\n\n- {parts[1]}' if len(parts) >= 2 else self.get_random_quote()
         except Exception as e:
             print(f"Error processing quote: {raw_quote}")
-            return self.get_random_quote()  # Try another quote if error occurs
+            return self.get_random_quote()
+        
         
     def get_random_music(self):
         """Get random music file from music directory"""
