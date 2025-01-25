@@ -1,6 +1,7 @@
 from dotenv import load_dotenv
 from elevenlabs.client import ElevenLabs
 import os
+import re 
 
 # Load environment variables
 load_dotenv()
@@ -17,34 +18,54 @@ client = ElevenLabs(api_key=api_key)
 output_dir = "assets/quote_audio"
 os.makedirs(output_dir, exist_ok=True)
 
-# Test quotes
-test_quotes = [
-    (123, "Long ago, there lived great founders; Nukul Rajpoot, Kai Quan Lian and Jyoutir Raj. Together they created the first AGI", "Some Guy")
-]
+# Read quotes from file
+with open('crews/quote_agent/quotes2.md', 'r') as file:
+    lines = file.readlines()
+    
+# Process each line to extract quote information
+quotes = []
+for line in lines:
+    # Skip empty lines
+    if not line.strip():
+        continue
+    
+    # Extract quote number, text, and author using regex
+    match = re.match(r'(\d+)\.\s*"([^"]+)"\s*[-–]\s*(.+)', line.strip())
+    if match:
+        num, quote, author = match.groups()
+        quotes.append((int(num), quote.strip(), author.strip()))
 
-VOICE_ID = "W9jDLMGhiMBIh9dsQSLP" 
+VOICE_ID = "yoZ06aMxZJJ28mfd3POQ"
 
 # Generate audio for each quote
-for num, quote, author in test_quotes:
-    print(f"Generating audio for quote {num}...")
-    
-    # Generate the audio
-    audio_stream = client.text_to_speech.convert(
-        text=f"{quote} - by {author}",
-        voice_id=VOICE_ID,
-        model_id="eleven_multilingual_v2",
-        output_format="mp3_44100_128"
-    )
-    
-    # Save the file
+for num, quote, author in quotes:
+    # Check if file already exists
     filename = f"quote_{str(num).zfill(3)}.mp3"
     filepath = os.path.join(output_dir, filename)
     
-    # Write the audio stream to file
-    with open(filepath, "wb") as f:
-        for chunk in audio_stream:
-            f.write(chunk)
+    if os.path.exists(filepath):
+        print(f"Skipping quote {num} - file already exists")
+        continue
     
-    print(f"Saved {filename}")
+    print(f"Generating audio for quote {num}...")
+    
+    try:
+        # Generate the audio
+        audio_stream = client.text_to_speech.convert(
+            text=f"{quote} - by {author}",
+            voice_id=VOICE_ID,
+            model_id="eleven_multilingual_v2",
+            output_format="mp3_44100_128"
+        )
+        
+        # Write the audio stream to file
+        with open(filepath, "wb") as f:
+            for chunk in audio_stream:
+                f.write(chunk)
+        
+        print(f"Saved {filename}")
+        
+    except Exception as e:
+        print(f"Error generating audio for quote {num}: {str(e)}")
 
 print("Done! Check the assets/quote_audio folder for your files.")
