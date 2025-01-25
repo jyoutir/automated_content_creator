@@ -52,3 +52,5 @@ image_generator:
     You're an expert at working with DALL-E to generate images that perfectly
     match given prompts. Your images are known for their quality and ability
     to create beautiful art.
+  expected_output: >
+    50 images corrsponding to each of the 50 prompts.

@@ -34,5 +34,5 @@ generate_images_task:
     Check generated_images.md for existing images, if there is a similar image name then skip it and continue from the prompt where it left off - some prompts may have already been done!
     Save each image with its corresponding word as the filename.
   expected_output: >
-    A list of generated image paths and their corresponding words.
+    A list of 50 generated image paths and their corresponding words.
   agent: image_generator
