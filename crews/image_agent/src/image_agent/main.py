@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 import sys
 import warnings
+from dotenv import load_dotenv
 
 from image_agent.crew import ImageAgentCrew  # Changed from ContentGenerationCrew
 
+load_dotenv()
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
