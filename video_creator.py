@@ -95,7 +95,8 @@ class VideoGenerator:
     def get_random_music(self):
         """Get random music file from music directory"""
         music_dir = "assets/music"
-        available_music = [f for f in os.listdir(music_dir) if f.endswith('.mp3')]
+        # Modified this line to include both .mp3 and .mp4 files
+        available_music = [f for f in os.listdir(music_dir) if f.endswith(('.mp3', '.mp4'))]
         random_music = random.choice(available_music)
         return os.path.join(music_dir, random_music)
 
@@ -148,7 +149,7 @@ class VideoGenerator:
             # WordBook text
             wordbook_text = (TextClip(
                 text="WordBook",
-                font_size=50,
+                font_size=60,
                 color="white",
                 stroke_color='black',
                 stroke_width=2,
@@ -157,7 +158,7 @@ class VideoGenerator:
 
             # Calculate center position for text with the same x-offset
             text_x = (video_width - wordbook_text.w) // 2 + x_offset  # Added same x_offset here
-            text_y = logo_y + logo.h + 10
+            text_y = logo_y + logo.h + 20
             wordbook_text = wordbook_text.with_position((text_x, text_y))
 
 
@@ -209,9 +210,9 @@ class VideoGenerator:
 
 if __name__ == "__main__":
     print("Starting 70 video generations...")
-    for i in range(70):
+    for i in range(111):
         try:
-            print(f"\nGenerating video {i+1} of 70...")
+            print(f"\nGenerating video {i+1} of 111...")
             generator = VideoGenerator(iteration=i+1)
             generator.create_video()
             time.sleep(2)
