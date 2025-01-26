@@ -180,8 +180,8 @@ class VideoGenerator:
             quote_audio_clip = AudioFileClip(quote_audio)
             background_music = AudioFileClip(self.get_random_music())
             
-            quote_audio_clip = quote_audio_clip.with_effects([MultiplyVolume(0.5)])      # 50% volume
-            background_music = background_music.with_effects([MultiplyVolume(0.05)])      # 5% volume
+            quote_audio_clip = quote_audio_clip.with_effects([MultiplyVolume(1)])      # 100% volume
+            background_music = background_music.with_effects([MultiplyVolume(0.2)])      # 20% volume
             if background_music.duration < final_video.duration:
                 background_music = background_music.loop(duration=final_video.duration)
             else:
